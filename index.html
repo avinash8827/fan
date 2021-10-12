@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cooling Fan</title>
+        <style>
+            div[data-avi="cooling"]{ /* Atrribute Selector */
+            }
+            .Fanon{
+                width: 300px;
+                height: 300px;
+                background-image: url("./img/fan-blades-png.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin:100px auto;
+                animation-name: fan;
+                animation-duration: 1s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-play-state: paused;
+            }
+            @keyframes fan {
+                0%{
+                    transform: rotateZ(0deg);
+                }
+                100%{
+                    transform: rotateZ(359deg);
+                }
+            }
+            .buttons > button:first-child{
+                border: none;
+                padding:30px 10px;
+                background-color:#fff;
+                width: 150px;
+                background-image: url("img/onoff.png");
+                background-repeat: no-repeat;
+                background-size: 150px 150px;
+            }
+        </style>
+        <script>
+              function x(elemment){
+                //Function boyd
+                return document.querySelector(elemment);
+            }
+
+            //1. Function Defination
+            function coolingFan(speed){
+                   if(speed == 0){
+                        document.querySelector('.Fanon').style.animationPlayState = 'paused';
+                        x('[onclick="coolingFan(0)"]').style.backgroundPosition = '0px -14px';
+                   }else if(speed == 1){
+                       //object.method()
+                        document.querySelector('.Fanon').style.animationPlayState = 'running';
+                        document.querySelector('#fanwings').style.animationDuration = '1s';
+                        x('[onclick="coolingFan(0)"]').style.backgroundPosition = '0px -78px ';
+                   }else if(speed == 2){
+                        //object.method()
+                        document.querySelector('[data-avi="cooling"]').style.animationPlayState = 'running';
+                        document.querySelector('[data-avi="cooling"]').style.animationDuration = '0.6s';
+                        x('[onclick="coolingFan(0)"]').style.backgroundPosition = '0px -78px';
+                   }else{
+                       //object.method()
+                       document.querySelector('#fanwings').style.animationPlayState = 'running';
+                       document.querySelector('.Fanon').style.animationDuration = '0.1s';
+                       x('[onclick="coolingFan(0)"]').style.backgroundPosition = '0px -78px';
+                      }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="Fanon" id="fanwings" data-avi="cooling" >
+
+        </div>
+        <div style="text-align: center;" class="buttons">
+            <button onclick="coolingFan(0)" ></button>
+            <button onclick="coolingFan(1)">1</button>
+            <button onclick="coolingFan(2)">2</button>
+            <button onclick="coolingFan(3)">3</button>
+        </div>
+
+        <script>
+
+        </script>
+    </body>
+</html>
